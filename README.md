@@ -1,5 +1,5 @@
-# hpc_lecture
 Student ID: 22M30646 
+# hpc_lecture
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
 | Class 1  | Introduction to parallel programming |                           |
