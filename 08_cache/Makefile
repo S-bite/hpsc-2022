@@ -20,5 +20,7 @@
 	nvcc 09_shared.cu -Xcompiler "-O3 -fopenmp"
 10_sgemm: 10_sgemm.cu
 	nvcc 10_sgemm.cu -Xcompiler "-O3 -fopenmp" -lcublas
-11_cutlass: 11_cutlass.cu
-	nvcc 11_cutlass.cu -Xcompiler "-O3 -fopenmp" -lcublas
+11_vector_4x2: 11_vector_4x2.cu
+	nvcc 11_vector_4x2.cu -Xcompiler "-O3 -fopenmp" -lcublas
+12_vector: 12_vector.cu
+	nvcc 12_vector.cu -Xcompiler "-O3 -fopenmp" -lcublas
