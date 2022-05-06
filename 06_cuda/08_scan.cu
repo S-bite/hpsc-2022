@@ -12,7 +12,7 @@ __global__ void scan(int *a, int *b, int N) {
 }
 
 int main() {
-  const int N=8;
+  const int N=15;
   int *a, *b;
   cudaMallocManaged(&a, N*sizeof(int));
   cudaMallocManaged(&b, N*sizeof(int));
