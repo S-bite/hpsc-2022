@@ -157,13 +157,11 @@ int main()
 
     for (int n = 0; n < nt; n++)
     {
-        cudaDeviceSynchronize();
         calc_b<<<grid, block>>>(b, u, v, ny, nx, dx, dy, dt, rho);
+        cudaDeviceSynchronize();
         for (int it = 0; it < nit; it++)
         {
-            copy<<<grid, block>>>(pn, p, ny, nx);
-            cudaDeviceSynchronize();
-
+            memcpy(pn, p, ny * nx * sizeof(float));
             calc_p<<<grid, block>>>(p, pn, b, ny, nx, dx, dy);
             cudaDeviceSynchronize();
 
@@ -178,10 +176,8 @@ int main()
                 p[0 * nx + i] = p[1 * nx + i];
             }
         }
-        copy<<<grid, block>>>(un, u, ny, nx);
-        cudaDeviceSynchronize();
-
-        copy<<<grid, block>>>(vn, v, ny, nx);
+        memcpy(un, u, ny * nx * sizeof(float));
+        memcpy(vn, v, ny * nx * sizeof(float));
         cudaDeviceSynchronize();
         calc_u_v<<<grid, block>>>(u, v, un, vn, p, ny, nx, dx, dy, dt, rho, nu);
         cudaDeviceSynchronize();
